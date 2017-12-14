@@ -1,6 +1,6 @@
 {
   "name": "pt2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description":
     "2D Point class that is capable of performing vector calculations. Provides convenience methods for calculating distance, magnitude, direction, angle (degrees and radians), to and from other Points or Point-like objects that contain 'x' and 'y' properties.",
   "main": "index.js",
