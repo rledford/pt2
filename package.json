@@ -1,20 +1,17 @@
 {
   "name": "pt2",
   "version": "0.1.0",
-  "description": "2D Point class that is capable of performing vector calculations. Provides convenience methods for calculating distance, magnitude, direction, angle (degrees and radians), to and from other Points or Point-like objects that contain 'x' and 'y' properties.",
+  "description":
+    "2D Point class that is capable of performing vector calculations. Provides convenience methods for calculating distance, magnitude, direction, angle (degrees and radians), to and from other Points or Point-like objects that contain 'x' and 'y' properties.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rledford/pt2.git"
   },
-  "keywords": [
-    "2D",
-    "vector",
-    "point"
-  ],
+  "keywords": ["2D", "vector", "point"],
   "author": "Ryan Ledford",
   "license": "BSD-2-Clause",
   "bugs": {

@@ -6,6 +6,17 @@ class Point {
     this.y = coords.y || 0;
   }
 
+  set(point = { x: 0, y: 0 }) {
+    this.x = point.x;
+    this.y = point.y;
+
+    return this;
+  }
+
+  clone() {
+    return new Point({ x: this.x, y: this.y });
+  }
+
   add(point = { x: 0, y: 0 }) {
     this.x += point.x || 0;
     this.y += point.y || 0;
@@ -28,11 +39,15 @@ class Point {
   }
 
   scaled(value) {
-    return new Point({ x: this.x * value, y: this.y * value });
+    return this.clone().scale(value);
   }
 
   cross(point = { x: 0, y: 0 }) {
     return this.x * point.y - this.y * point.x;
+  }
+
+  dot(point = { x: 0, y: 0 }) {
+    return this.x * point.x + this.y * point.y;
   }
 
   mag2() {
@@ -43,27 +58,21 @@ class Point {
     return Math.sqrt(this.mag2());
   }
 
-  rotate(degrees) {
-    let rad = degrees * DEG2RAD;
-    let cos = Math.cos(rad);
-    let sin = Math.sin(rad);
-    let x = this.x * cos - this.y * sin;
-    let y = this.x * sin + this.y * cos;
-    this.x = x;
-    this.y = y;
+  rotate(degrees, origin = { x: 0, y: 0 }) {
+    let angle = DEG2RAD * degrees;
+    let s = Math.sin(angle);
+    let c = Math.cos(angle);
+    this.sub(origin);
+    let x = this.x * c - this.y * s;
+    let y = this.x * s + this.y * c;
+    this.set({ x: x, y: y });
+    this.add(origin);
 
     return this;
   }
 
-  rotated(degrees) {
-    let rad = degrees * DEG2RAD;
-    let cos = Math.cos(rad);
-    let sin = Math.sin(rad);
-    let point = new Point();
-    point.x = this.x * cos - y * sin;
-    point.y = this.x * sin + y * cos;
-
-    return point;
+  rotated(degrees, origin = { x: 0, y: 0 }) {
+    return this.clone().rotate(degrees, origin);
   }
 
   normalize() {
@@ -77,21 +86,7 @@ class Point {
   }
 
   normalized() {
-    let mag = this.mag();
-    let point = new Point();
-    if (mag === 0) return point;
-
-    point.x = this.x / mag;
-    point.y = this.y / mag;
-
-    return point;
-  }
-
-  set(point = { x: 0, y: 0 }) {
-    this.x = point.x;
-    this.y = point.y;
-
-    return this;
+    return this.clone().normalize();
   }
 
   negate() {
@@ -102,7 +97,7 @@ class Point {
   }
 
   negated() {
-    return new Point({ x: this.x * -1, y: this.y * -1 });
+    return this.clone().negate();
   }
 
   dist2(point = { x: 0, y: 0 }) {
@@ -116,20 +111,21 @@ class Point {
     return Math.sqrt(this.dist2(point));
   }
 
-  radTo(point = { x: 0, y: 0 }) {
+  radiansTo(point = { x: 0, y: 0 }) {
     return Math.atan2(point.y - this.y, point.x - this.x);
   }
 
-  radFrom(point = { x: 0, y: 0 }) {
-    return Math.atan2(this.y - point.y, this.x - point.y);
+  radiansFrom(point = { x: 0, y: 0 }) {
+    return Math.atan2(this.y - point.y, this.x - point.x);
   }
 
   degreesTo(point = { x: 0, y: 0 }) {
-    return this.radTo(point) / DEG2RAD;
+    let degrees = this.radiansTo(point) / DEG2RAD;
+    return degrees < 0 ? degrees + 360 : degrees;
   }
 
   degreesFrom(point = { x: 0, y: 0 }) {
-    return this.radFrom(point) * DEG2RAD;
+    return new Point(point).degreesTo(this);
   }
 
   directionTo(point = { x: 0, y: 0 }) {
@@ -140,7 +136,7 @@ class Point {
   }
 
   directionFrom(point = { x: 0, y: 0 }) {
-    return this.to(point).negate();
+    return this.directionTo(point).negate();
   }
 }
 
