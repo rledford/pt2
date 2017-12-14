@@ -92,19 +92,26 @@ pointA.mag2(); // 2 - the squared magnitude of the point - similar to mag() but 
 
 ```javascript
 var pointA = new Point({ x: 1, y: 1 });
-pointA.normalize(); // {x: 0.74, y: 0.74}
+pointA.normalize(); // { x: 0.7071067811865475, y: 0.7071067811865475 }
 
 var pointB = new Point({ x: 1, y: 1 });
-var norm = pointB.normalized(); // new Point {x: 0.74, y: 0.74} is returned - pointB is unaffected
+var norm = pointB.normalized(); // new Point { x: 0.7071067811865475, y: 0.7071067811865475 } is returned - pointB is unaffected
 ```
 
 ### Rotating
 
+`rotate` and `rotated` take a value, in degrees, and an optional origin. The origin must be another `Point` or an `Object` with `x` and `y` properties. The default origin is (0, 0).
+
 ```javascript
 var pointA = new Point({ x: 1, y: 1 });
-pointA.rotate(90); // {x: -1, y: 0}
+pointA.rotate(180); // { x: -0.9999999999897932, y: -1.0000000000102067 }
 
-var pointB = pointA.rotated(270); // {x: 1, y: 1} - leaves pointA unaffected
+var pointB = pointA.rotated(180); // { x: 1, y: 1 } - leaves pointA unaffected
+
+var origin = new Point({ x: 2, y: 1 });
+
+pointA.set({ x: 1, y: 1 });
+point.rotate(180, origin); // { x: 3, y: 1.0000000000102067 }
 ```
 
 ### Negating

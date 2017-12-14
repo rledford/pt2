@@ -1,11 +1,13 @@
 var Point = require('./index');
 
-function testPointsWithPoints() {
+function testGroup1() {
   var methods = [
     'add',
     'sub',
     'cross',
     'dot',
+    'normalize',
+    'normalized',
     'dist',
     'dist2',
     'radiansTo',
@@ -28,7 +30,7 @@ function testPointsWithPoints() {
   });
 }
 
-function testPointsWithValues() {
+function testGroup2() {
   var methods = ['scale', 'scaled'];
   methods.forEach(function(method) {
     var pointA = new Point({ x: 1, y: 1 });
@@ -43,7 +45,7 @@ function testPointsWithValues() {
   });
 }
 
-function testRotations() {
+function testGroup3() {
   var pointA = new Point({ x: 1, y: 1 });
   var origin = new Point({ x: 2, y: 1 });
   var degrees = 180;
@@ -62,6 +64,6 @@ function testRotations() {
   console.log(pointA.clone().rotated(degrees, origin));
 }
 
-testPointsWithPoints();
-testPointsWithValues();
-testRotations();
+testGroup1();
+testGroup2();
+testGroup3();
