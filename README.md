@@ -156,7 +156,7 @@ pointA
   .scale(10);
 ```
 
-The methods that dot no return a `Point` or `this` include:
+The methods that do not return a `Point` or `this` include:
 
 * mag
 * mag2
