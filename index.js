@@ -1,6 +1,9 @@
 var DEG2RAD = 0.01745329252;
 
 function Point(point) {
+  if (!point) {
+    point = { x: 0, y: 0 }
+  }
   this.x = point.x;
   this.y = point.y;
 }
