@@ -1,13 +1,13 @@
 ## PT2
 
-Provides a Point class that can be used to perform 2d vector operations. The Point class has convenient methods for calculating distance, magnitude (length), direction, angle (degrees and radians), to and from other Points or Point-like objects that have 'x' and 'y' properties. Also provides methods to rotate points around an optional origin.
+Provides a Point class that can be used to perform 2d vector operations. The Point class has convenient methods for calculating distance, magnitude (length), direction and angle (degrees and radians) to and from other Points or Point-like objects that have 'x' and 'y' properties. Also provides methods to rotate points around an optional origin.
 
 ### Installing
 
 #### NPM
 
 ```bash
-npm install pt2 --save
+npm i -S pt2
 ```
 
 #### Yarn
@@ -158,11 +158,11 @@ pointA
 
 The methods that do not return a `Point` or `this` include:
 
-* mag
-* mag2
-* dist
-* dist2
-* radiansTo
-* radiansFrom
-* degreesTo
-* degreesFrom
+- mag
+- mag2
+- dist
+- dist2
+- radiansTo
+- radiansFrom
+- degreesTo
+- degreesFrom

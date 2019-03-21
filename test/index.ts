@@ -1,4 +1,5 @@
-var Point = require('./index');
+import { Point } from '../src/Point';
+
 function testGroup1() {
   var methods = [
     'add',
@@ -15,8 +16,8 @@ function testGroup1() {
     'directionFrom'
   ];
   methods.forEach(function(method) {
-    var pointA = new Point({ x: 1, y: 1 });
-    var pointB = new Point({ x: 5, y: 10 });
+    var pointA = new Point(1, 1);
+    var pointB = new Point(5, 10);
     console.log('***************************');
     console.log('test', method);
     console.log('pointA', pointA);
@@ -29,7 +30,7 @@ function testGroup1() {
 function testGroup2() {
   var methods = ['scale', 'scaled'];
   methods.forEach(function(method) {
-    var pointA = new Point({ x: 1, y: 1 });
+    var pointA = new Point(1, 1);
     var value = 45;
     console.log('***************************');
     console.log('test', method);
@@ -43,7 +44,7 @@ function testGroup2() {
 function testGroup3() {
   var methods = ['normalize', 'normalized', 'negate', 'negated'];
   methods.forEach(function(method) {
-    var pointA = new Point({ x: 1, y: -1 });
+    var pointA = new Point(1, -1);
     console.log('***************************');
     console.log('test', method);
     console.log('pointA', pointA);
@@ -52,8 +53,8 @@ function testGroup3() {
   });
 }
 function testGroup4() {
-  var pointA = new Point({ x: 1, y: 1 });
-  var origin = new Point({ x: 2, y: 1 });
+  var pointA = new Point(1, 1);
+  var origin = new Point(2, 1);
   var degrees = 180;
   console.log('***************************');
   console.log('test rotation');
