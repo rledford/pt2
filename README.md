@@ -1,6 +1,6 @@
 ## PT2
 
-Provides a Point class that can be used to perform 2d vector operations. The Point class has convenient methods for calculating distance, magnitude (length), direction angle (degrees and radians) to and from other Points or Point-like objects that have 'x' and 'y' properties. Also provides methods to rotate points around an optional origin.
+Provides a Point class that can be used to perform 2d vector operations. The Point class has convenient methods for calculating distance, magnitude (length), direction and angle (degrees and radians) to and from other Points or Point-like objects that have 'x' and 'y' properties. Also provides methods to rotate points around an optional origin.
 
 ### Installing
 
