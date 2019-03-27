@@ -62,11 +62,11 @@ export class Point implements IPoint {
   }
 
   mag(): number {
-    return Math.pow(this.x, 2) + Math.pow(this.y, 2);
+    return Math.sqrt(this.mag2());
   }
 
   mag2(): number {
-    return Math.sqrt(this.mag2());
+    return Math.pow(this.x, 2) + Math.pow(this.y, 2);
   }
 
   rotate(degrees: number, origin?: IPoint): Point {
